@@ -2,4 +2,5 @@
 <resources>
     <dimen name="recycler_view_padding_left">16dp</dimen>
     <dimen name="recycler_view_padding_right">16dp</dimen>
+    <dimen name="progress_bar_margin">8dp</dimen>
 </resources>
