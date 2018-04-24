@@ -9,10 +9,10 @@
 
     <ImageView
         android:id="@+id/user_image_large"
-        android:layout_width="200dp"
+        android:layout_width="@dimen/width_large_image"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="@dimen/large_image_margin"
+        android:layout_marginTop="@dimen/large_image_margin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_height="100dp"
@@ -20,26 +20,22 @@
 
     <TextView
         android:id="@+id/user_name"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginEnd="@dimen/text_view_margin"
+        android:layout_marginTop="@dimen/text_view_margin"
         android:textAppearance="@style/TextAppearance.AppCompat.Button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/user_image_large"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Mr_robot" />
 
     <TextView
         android:id="@+id/bio_text"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginEnd="@dimen/text_view_bio_margin"
+        android:layout_marginTop="@dimen/text_view_bio_margin"
         app:layout_constraintEnd_toEndOf="@+id/user_email_address"
-        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="@+id/user_image_large"
         app:layout_constraintTop_toBottomOf="@+id/user_image_large"
         tools:text="Once upon a time there was a little developer with healthy mental problems" />
@@ -48,18 +44,18 @@
         android:id="@+id/user_followers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginTop="@dimen/text_view_followers_margin_top"
         android:textAppearance="@style/TextAppearance.AppCompat"
-        app:layout_constraintBottom_toBottomOf="@+id/user_image_large"
-        app:layout_constraintStart_toEndOf="@+id/user_image_large"
+        app:layout_constraintEnd_toEndOf="@+id/user_email_address"
+        app:layout_constraintTop_toBottomOf="@+id/user_email_address"
         tools:text="2333" />
 
     <TextView
         android:id="@+id/user_email_address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@+id/user_name"
+        android:layout_marginTop="@dimen/text_view_email_margin_top"
+        app:layout_constraintEnd_toEndOf="@+id/user_name"
         app:layout_constraintTop_toBottomOf="@+id/user_name"
         tools:text="mrRobot@evilcorp.com" />
 

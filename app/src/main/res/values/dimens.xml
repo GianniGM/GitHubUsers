@@ -6,4 +6,16 @@
     <dimen name="elevation_user_detail_item">5dp</dimen>
     <dimen name="text_view_margin_bottom">8dp</dimen>
     <dimen name="recycler_view_height">0dp</dimen>
+    <dimen name="image_width">100dp</dimen>
+    <dimen name="image_height">100dp</dimen>
+    <dimen name="margin_top_main_layout">8dp</dimen>
+    <dimen name="margin_text_view">8dp</dimen>
+    <dimen name="width_large_image">200dp</dimen>
+    <dimen name="large_image_margin">16dp</dimen>
+    <dimen name="text_view_margin">16dp</dimen>
+    <dimen name="text_view_bio_margin">16dp</dimen>
+    <dimen name="text_view_followers_margin_top">8dp</dimen>
+    <dimen name="text_view_email_margin_top">8dp</dimen>
+    <dimen name="large_image_margin_bottom">8dp</dimen>
+    <dimen name="text_view_bio_margin_land">8dp</dimen>
 </resources>
