@@ -1,5 +1,6 @@
 package it.giangraziano.moovelcodingchallenge.adapters
 
+import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +11,7 @@ import com.squareup.picasso.Picasso
 import it.giangraziano.moovelcodingchallenge.R
 import it.giangraziano.moovelcodingchallenge.model.GitHubUser
 
-class DevelopersListAdapter : RecyclerView.Adapter<DevelopersListAdapter.DeveloperViewHolder>() {
+class DevelopersListAdapter (private val onItemClick: (GitHubUser) -> Unit) : RecyclerView.Adapter<DevelopersListAdapter.DeveloperViewHolder>() {
 
     private var developers: MutableList<GitHubUser> = mutableListOf()
 
@@ -35,6 +36,7 @@ class DevelopersListAdapter : RecyclerView.Adapter<DevelopersListAdapter.Develop
         val item = developers[position]
         holder.setImage(item.avatar_url, "remove this content description")
         holder.setName(item.login)
+        holder.setOnClick { onItemClick(item) }
     }
 
     inner class DeveloperViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
@@ -50,6 +52,10 @@ class DevelopersListAdapter : RecyclerView.Adapter<DevelopersListAdapter.Develop
 
         fun setName(name: String?){
             developerUserNameText.text = name
+        }
+
+        fun setOnClick(onClick: (Context) -> Unit){
+            view.setOnClickListener { onClick(it.context) }
         }
     }
 }

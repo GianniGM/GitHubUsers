@@ -1,5 +1,6 @@
 package it.giangraziano.moovelcodingchallenge.view
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.RecyclerView
@@ -14,6 +15,8 @@ import it.giangraziano.moovelcodingchallenge.presenter.MainActivityPresenter
 import it.giangraziano.moovelcodingchallenge.presenter.MainActivityPresenterImpl
 import kotlinx.android.synthetic.main.activity_main.*
 
+const val EXTRA_USER_ID = "extra_user_id"
+
 class MainActivity : AppCompatActivity(), MainView {
 
     companion object {
@@ -22,7 +25,7 @@ class MainActivity : AppCompatActivity(), MainView {
 
     private val developerListRecyclerView: RecyclerView by lazy {
         items_list.setColumnsLayout(this, false)
-        items_list.adapter = DevelopersListAdapter()
+        items_list.adapter = DevelopersListAdapter { item -> onItemClick(item)}
         items_list
     }
 
@@ -33,6 +36,12 @@ class MainActivity : AppCompatActivity(), MainView {
         setContentView(R.layout.activity_main)
         mainActivityPresenter = MainActivityPresenterImpl(this)
         mainActivityPresenter?.onResume()
+    }
+
+    private fun onItemClick(item: GitHubUser){
+        val intent = Intent(this, UserDetailActivity::class.java)
+        intent.putExtra(EXTRA_USER_ID, item.id)
+        startActivity(intent)
     }
 
     override fun showProgress() {
