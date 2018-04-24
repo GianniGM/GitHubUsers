@@ -3,4 +3,7 @@
     <dimen name="recycler_view_padding_left">16dp</dimen>
     <dimen name="recycler_view_padding_right">16dp</dimen>
     <dimen name="progress_bar_margin">8dp</dimen>
+    <dimen name="elevation_user_detail_item">5dp</dimen>
+    <dimen name="text_view_margin_bottom">8dp</dimen>
+    <dimen name="recycler_view_height">0dp</dimen>
 </resources>

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MoovelCodingChallenge</string>
+    <string name="error_message">Something Gone Wrong :(</string>
 </resources>
