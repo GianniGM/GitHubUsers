@@ -26,8 +26,10 @@ class MainActivityPresenterImpl(private val mainView: MainView) : MainActivityPr
                 ?.observeOn(AndroidSchedulers.mainThread())
                 ?.subscribe({
                     mainView.hideProgress(true)
-                    val developers = it.asSequence().sortedBy { it.login }.toMutableList()
-                    mainView.setData(developers)
+                    val developers = it.items?.asSequence()?.sortedBy { it.login }?.toMutableList()
+                    if (developers != null) {
+                        mainView.setData(developers)
+                    }
                 }, {
                     mainView.hideProgress(false)
                     mainView.showToast(it.localizedMessage.toString())
