@@ -16,5 +16,6 @@ data class GitHubUser(
         val followers: Long?,
         val created_at: String?,
         val updated_at: String?,
-        val email: String?
+        val email: String?,
+        val bio: String?
 )
