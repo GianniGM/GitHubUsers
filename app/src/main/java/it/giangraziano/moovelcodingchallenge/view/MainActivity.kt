@@ -15,7 +15,7 @@ import it.giangraziano.moovelcodingchallenge.presenter.MainActivityPresenter
 import it.giangraziano.moovelcodingchallenge.presenter.MainActivityPresenterImpl
 import kotlinx.android.synthetic.main.activity_main.*
 
-const val EXTRA_USER_ID = "extra_user_id"
+const val EXTRA_USER_LOGIN = "extra_user_id"
 
 class MainActivity : AppCompatActivity(), MainView {
 
@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity(), MainView {
 
     private fun onItemClick(item: GitHubUser){
         val intent = Intent(this, UserDetailActivity::class.java)
-        intent.putExtra(EXTRA_USER_ID, item.id)
+        intent.putExtra(EXTRA_USER_LOGIN, item.login)
         startActivity(intent)
     }
 
