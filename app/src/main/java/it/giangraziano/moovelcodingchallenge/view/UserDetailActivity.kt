@@ -1,7 +1,8 @@
-package it.giangraziano.moovelcodingchallenge
+package it.giangraziano.moovelcodingchallenge.view
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import it.giangraziano.moovelcodingchallenge.R
 
 class UserDetailActivity : AppCompatActivity() {
 

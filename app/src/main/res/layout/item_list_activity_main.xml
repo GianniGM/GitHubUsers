@@ -7,7 +7,7 @@
     android:layout_height="wrap_content"
     android:elevation="@dimen/elevation_user_detail_item"
     android:layout_marginTop="8dp"
-    tools:context=".UserDetailActivity">
+    tools:context=".view.UserDetailActivity">
 
     <ImageView
         android:id="@+id/developer_user_image"
