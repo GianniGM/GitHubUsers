@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">MoovelCodingChallenge</string>
     <string name="error_message">Something Gone Wrong :(</string>
+    <string name="no_username">No name</string>
+    <string name="no_followers">not available</string>
+    <string name="no_bio">no biography</string>
+    <string name="no_email">no email</string>
+    <string name="followers">followers</string>
 </resources>
