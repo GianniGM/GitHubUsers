@@ -6,4 +6,5 @@
     <string name="no_bio">no biography</string>
     <string name="no_email">no email</string>
     <string name="followers">followers</string>
+    <string name="send_email_to">Send an email to %1$s</string>
 </resources>

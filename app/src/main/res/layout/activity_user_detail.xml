@@ -59,4 +59,17 @@
         app:layout_constraintTop_toBottomOf="@+id/user_name"
         tools:text="mrRobot@evilcorp.com" />
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/send_email_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/marginBottom_fab"
+        android:layout_marginEnd="@dimen/marginBottom_fab"
+        android:clickable="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_dialog_email"
+        android:focusable="true" />
+
 </android.support.constraint.ConstraintLayout>
