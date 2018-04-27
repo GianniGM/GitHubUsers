@@ -15,11 +15,11 @@ class GitHubNetwork(private val retrofit: GitHubService) {
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build()
-                .create(GitHubService::class.java) )
+                .create(GitHubService::class.java))
     }
 
-    fun getGitHubUsersFromApi(): Single<Response>? =
-            retrofit.searchDevelopers( NetworkData.query, 0,NetworkData.type)
+    fun getGitHubUsersFromApi(page: Int): Single<Response>? =
+            retrofit.searchDevelopers(NetworkData.query, page, NetworkData.type)
 
 
     fun getGitHubUserInfo(username: String): Single<GitHubUser>? =
