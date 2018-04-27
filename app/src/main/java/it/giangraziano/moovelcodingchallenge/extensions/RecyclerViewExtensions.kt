@@ -5,8 +5,6 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.StaggeredGridLayoutManager
 
-const val ITEMS_TO_LOAD = 25
-
 fun RecyclerView.setColumnsLayout(ctx: Context, isStaggered: Boolean) {
     layoutManager = if (isStaggered) {
         val displayMetrics = ctx.resources.displayMetrics
@@ -18,14 +16,22 @@ fun RecyclerView.setColumnsLayout(ctx: Context, isStaggered: Boolean) {
     }
 }
 
-fun RecyclerView.onScrollToEnd(whenScrollCloseToEnd: (Unit) -> Unit) =
+fun RecyclerView.onScrollToEnd(isStaggered: Boolean, whenScrollCloseToEnd: (Unit) -> Unit) =
         addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
 
-                val manager = layoutManager as StaggeredGridLayoutManager
-                val firstVisibleItemsPos = manager.findFirstVisibleItemPositions(null).max() ?: 0
-                val childValues = manager.childCount + firstVisibleItemsPos
-                if (childValues >= layoutManager.itemCount - ITEMS_TO_LOAD) {
+                val childValues = if (isStaggered) {
+                    val manager = layoutManager as StaggeredGridLayoutManager
+                    val firstVisibleItemsPos = manager.findFirstVisibleItemPositions(null)
+                            .max() ?: 0
+                    manager.childCount + firstVisibleItemsPos
+                } else {
+                    val manager = layoutManager as LinearLayoutManager
+                    val firstVisibleItemPos = manager.findFirstCompletelyVisibleItemPosition()
+                    manager.childCount + firstVisibleItemPos
+                }
+
+                if (childValues >= layoutManager.itemCount) {
                     whenScrollCloseToEnd(kotlin.Unit)
                 }
             }
