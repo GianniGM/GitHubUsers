@@ -9,6 +9,7 @@ import android.widget.TextView
 import android.widget.Toast
 import it.giangraziano.moovelcodingchallenge.R
 import it.giangraziano.moovelcodingchallenge.adapters.DevelopersListAdapter
+import it.giangraziano.moovelcodingchallenge.extensions.onScrollToEnd
 import it.giangraziano.moovelcodingchallenge.extensions.setColumnsLayout
 import it.giangraziano.moovelcodingchallenge.model.GitHubUser
 import it.giangraziano.moovelcodingchallenge.presenter.MainActivityPresenter
@@ -36,6 +37,10 @@ class MainActivity : AppCompatActivity(), MainView {
         setContentView(R.layout.activity_main)
         mainActivityPresenter = MainActivityPresenterImpl(this)
         mainActivityPresenter?.onResume()
+
+        developerListRecyclerView.onScrollToEnd(false){
+            mainActivityPresenter?.onScrollToEnd()
+        }
     }
 
     private fun onItemClick(item: GitHubUser){
@@ -67,7 +72,7 @@ class MainActivity : AppCompatActivity(), MainView {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
 
-    override fun setData(dataList: MutableList<GitHubUser>) {
+    override fun addData(dataList: MutableList<GitHubUser>) {
         (developerListRecyclerView.adapter as DevelopersListAdapter).addData(dataList)
     }
 }
