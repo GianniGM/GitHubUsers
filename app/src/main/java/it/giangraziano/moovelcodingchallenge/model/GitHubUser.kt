@@ -7,15 +7,15 @@ data class Response(
 )
 
 data class GitHubUser(
-        val login: String?,
-        val id: Int?,
-        val avatar_url: String?,
-        val url: String?,
-        val html_url: String,
-        val type: String,
-        val followers: Long?,
-        val created_at: String?,
-        val updated_at: String?,
-        val email: String?,
-        val bio: String?
+        val login: String? = "no login",
+        val id: Int? = 123,
+        val avatar_url: String? = "no avatar",
+        val url: String? = "no url",
+        val html_url: String = "no url",
+        val type: String = "no type",
+        val followers: Long? = 0,
+        val created_at: String? = "no data",
+        val updated_at: String?  = "no data",
+        val email: String?  = "no email",
+        val bio: String?  = "no bio"
 )
