@@ -9,7 +9,7 @@
 
     <ImageView
         android:id="@+id/user_image_large"
-        android:layout_width="@dimen/width_large_image"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/large_image_margin"
         android:layout_marginTop="@dimen/large_image_margin"
