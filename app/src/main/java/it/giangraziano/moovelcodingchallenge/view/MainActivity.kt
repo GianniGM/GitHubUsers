@@ -4,6 +4,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.RecyclerView
+import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
@@ -41,6 +42,11 @@ class MainActivity : AppCompatActivity(), MainView {
         developerListRecyclerView.onScrollToEnd(false){
             mainActivityPresenter?.onScrollToEnd()
         }
+
+        button_refresh.setOnClickListener {
+            button_refresh.visibility = Button.GONE
+            mainActivityPresenter?.onResume()
+        }
     }
 
     private fun onItemClick(item: GitHubUser){
@@ -66,6 +72,11 @@ class MainActivity : AppCompatActivity(), MainView {
             TextView.GONE
         else
             TextView.VISIBLE
+
+        button_refresh.visibility = if(loadingSuccess)
+            Button.GONE
+        else
+            Button.VISIBLE
     }
 
     override fun showToast(message: String) {

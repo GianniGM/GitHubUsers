@@ -12,6 +12,7 @@ const val USERS_TO_LOAD_AT_ONCE = 10
 
 class MainActivityPresenterImpl(private val mainView: MainView) : MainActivityPresenter {
 
+
     private val network = GitHubNetwork.create()
     private var obs: Disposable? = null
     private var currentPage = 1

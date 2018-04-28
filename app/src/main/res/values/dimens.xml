@@ -19,4 +19,5 @@
     <dimen name="large_image_margin_bottom">8dp</dimen>
     <dimen name="text_view_bio_margin_land">8dp</dimen>
     <dimen name="marginBottom_fab">16dp</dimen>
+    <dimen name="button_margin">8dp</dimen>
 </resources>

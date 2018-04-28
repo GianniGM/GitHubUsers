@@ -10,4 +10,5 @@
     <string name="no_email_error_message">User has private email, I\'m sorry :(</string>
     <string name="send_email">Send email</string>
     <string name="avatar_user">Avatar user</string>
+    <string name="reload">Reload</string>
 </resources>
