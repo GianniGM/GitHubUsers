@@ -28,6 +28,13 @@ class UserDetailActivity : AppCompatActivity(), DetailView {
         val userLogin = intent.extras.get(EXTRA_USER_LOGIN).toString()
         detailActivityPresenter = DetailActivityPresenterImpl(this, userLogin)
         detailActivityPresenter?.onResume()
+        send_email_fab.setOnClickListener {
+            Toast.makeText(
+                    this,
+                    getString(R.string.no_email_error_message),
+                    Toast.LENGTH_SHORT
+            ).show()
+        }
     }
 
     override fun setView(user: GitHubUser?) {
@@ -41,7 +48,6 @@ class UserDetailActivity : AppCompatActivity(), DetailView {
         Picasso.get().load(user?.avatar_url).into(user_image_large)
         user_image_large.contentDescription = user?.login
         if (user?.email != null) {
-            send_email_fab.visibility = View.VISIBLE
             send_email_fab.setOnClickListener { launchEmailIntent(user.email) }
             send_email_fab.contentDescription = getString(R.string.send_email_to, user.login)
         }
