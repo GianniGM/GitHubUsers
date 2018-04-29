@@ -3,7 +3,7 @@ package it.giangraziano.moovelcodingchallenge.presenter
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import it.giangraziano.moovelcodingchallenge.network.GitHubNetwork
+import it.giangraziano.moovelcodingchallenge.model.GitHubState
 import it.giangraziano.moovelcodingchallenge.view.DetailView
 
 class DetailActivityPresenterImpl(
@@ -11,19 +11,19 @@ class DetailActivityPresenterImpl(
         private val userLogin: String
 ) : DetailActivityPresenter {
 
-    private val network = GitHubNetwork.create()
-    private var obs: Disposable? = null
+    private val network = GitHubState.create()
+    private var disposable: Disposable? = null
 
     override fun onResume() {
         serve()
     }
 
     override fun onDestroy() {
-        obs?.dispose()
+        disposable?.dispose()
     }
 
     private fun serve() {
-        this.obs = network.getGitHubUserInfo(userLogin)
+        this.disposable = network.getGitHubUserInfo(userLogin)
                 ?.subscribeOn(Schedulers.io())
                 ?.observeOn(AndroidSchedulers.mainThread())
                 ?.subscribe({
