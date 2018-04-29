@@ -29,12 +29,30 @@ As we know __RxJava__ isn't asynchronous by default so I wanted to observe my ta
 ### Picasso
 For image loading I used latest version [Picasso](http://square.github.io/picasso/) Provides a simple loading images and relative caching. Other good alternative was __Glide__ but for now I'm more confident using Picasso.
 
+## Tests
+I'm not very able to implementing tests (for now), I've never tested rxJava and Retrofit (always for now), however this project was a great starting point for me to learn a couple of things about Tests on Android.
+
+### Unit Tests
+In this app there's a little business logic, I used __JUnit__ to test a pair functionalities.
+
+I mocked my request using [Mockito](http://site.mockito.org/) to simulate requests to server and __TestObserver__ to simulate observers.
+
+### UI Tests
+Unfortunately in this app I was not able to write a concise and useful UI test, but if I had  decided to implement tests i would have use these libraries:
+
+* __Mockito__ to use mocked data, through a stub that simulates the http call
+* __Espresso__ for UI Tests,
+* [Roboelectric](http://robolectric.org/) to allow me to test the app without start my device app without starting my device whether it's an emulator or a physical device
+___
+
 ## Bugs
-* Sometims, while testing on physical device sometimes I recieve a forbidden error when I scroll down.
+* Sometims, while testing on physical device sometimes I recieve a forbidden error when I scroll down. I suppose there is a limit for Github if i call services without an api key
 ___
 ## Mentioned Libraries:
 * Retrofit: http://square.github.io/retrofit/
 * RxJava: https://github.com/ReactiveX/RxJava
 * RxJava Adapters: https://github.com/square/retrofit/tree/master/retrofit-adapters/rxjava
+* Roboelectric: http://robolectric.org/
+* Mockito: http://site.mockito.org/
 * RxAndroid: https://github.com/ReactiveX/RxAndroid
 * Picasso: http://square.github.io/picasso/
