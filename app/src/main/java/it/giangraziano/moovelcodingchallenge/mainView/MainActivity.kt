@@ -1,4 +1,4 @@
-package it.giangraziano.moovelcodingchallenge.view
+package it.giangraziano.moovelcodingchallenge.mainView
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
@@ -9,12 +9,12 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import it.giangraziano.moovelcodingchallenge.R
-import it.giangraziano.moovelcodingchallenge.adapters.DevelopersListAdapter
+import it.giangraziano.moovelcodingchallenge.mainView.adapters.DevelopersListAdapter
 import it.giangraziano.moovelcodingchallenge.extensions.onScrollToEnd
 import it.giangraziano.moovelcodingchallenge.extensions.setColumnsLayout
 import it.giangraziano.moovelcodingchallenge.model.GitHubUser
-import it.giangraziano.moovelcodingchallenge.presenter.MainActivityPresenter
-import it.giangraziano.moovelcodingchallenge.presenter.MainActivityPresenterImpl
+import it.giangraziano.moovelcodingchallenge.model.GitHubStateImpl
+import it.giangraziano.moovelcodingchallenge.detailView.UserDetailActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 const val EXTRA_USER_LOGIN = "extra_user_id"
@@ -27,29 +27,36 @@ class MainActivity : AppCompatActivity(), MainView {
 
     private val developerListRecyclerView: RecyclerView by lazy {
         items_list.setColumnsLayout(this, false)
-        items_list.adapter = DevelopersListAdapter { item -> onItemClick(item)}
+        items_list.adapter = DevelopersListAdapter { item -> onItemClick(item) }
         items_list
     }
 
-    private var mainActivityPresenter: MainActivityPresenter? = null
+    private lateinit var mainActivityPresenter: MainActivityPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        mainActivityPresenter = MainActivityPresenterImpl(this)
-        mainActivityPresenter?.onResume()
 
-        developerListRecyclerView.onScrollToEnd(false){
-            mainActivityPresenter?.onScrollToEnd()
+        mainActivityPresenter = MainActivityPresenterImpl(
+                this,
+                GitHubStateImpl.create()
+        )
+
+        mainActivityPresenter.initialLoading()
+
+        developerListRecyclerView.onScrollToEnd(false) {
+            mainActivityPresenter.loadMore()
+
         }
 
         button_refresh.setOnClickListener {
             button_refresh.visibility = Button.GONE
-            mainActivityPresenter?.onResume()
+            mainActivityPresenter.initialLoading()
         }
     }
 
-    private fun onItemClick(item: GitHubUser){
+
+    private fun onItemClick(item: GitHubUser) {
         val intent = Intent(this, UserDetailActivity::class.java)
         intent.putExtra(EXTRA_USER_LOGIN, item.login)
         startActivity(intent)
@@ -59,6 +66,11 @@ class MainActivity : AppCompatActivity(), MainView {
         progress_bar.visibility = ProgressBar.VISIBLE
         error_text_message.visibility = TextView.GONE
         developerListRecyclerView.visibility = RecyclerView.GONE
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mainActivityPresenter.dispose()
     }
 
     override fun hideProgress(loadingSuccess: Boolean) {
@@ -73,7 +85,7 @@ class MainActivity : AppCompatActivity(), MainView {
         else
             TextView.VISIBLE
 
-        button_refresh.visibility = if(loadingSuccess)
+        button_refresh.visibility = if (loadingSuccess)
             Button.GONE
         else
             Button.VISIBLE

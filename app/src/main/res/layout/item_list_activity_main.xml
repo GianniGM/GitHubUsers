@@ -8,7 +8,7 @@
     android:elevation="@dimen/elevation_user_detail_item"
     android:layout_margin="@dimen/margin_top_main_layout"
     android:background="@color/white"
-    tools:context=".view.UserDetailActivity">
+    tools:context=".detailView.UserDetailActivity">
 
     <ImageView
         android:id="@+id/developer_user_image"

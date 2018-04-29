@@ -1,4 +1,4 @@
-package it.giangraziano.moovelcodingchallenge.view
+package it.giangraziano.moovelcodingchallenge.mainView
 
 
 import it.giangraziano.moovelcodingchallenge.model.GitHubUser

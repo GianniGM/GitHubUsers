@@ -1,17 +1,14 @@
-package it.giangraziano.moovelcodingchallenge.view
+package it.giangraziano.moovelcodingchallenge.detailView
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v4.app.ShareCompat
 import android.widget.Toast
 import com.squareup.picasso.Picasso
 import it.giangraziano.moovelcodingchallenge.R
 import it.giangraziano.moovelcodingchallenge.model.GitHubUser
-import it.giangraziano.moovelcodingchallenge.presenter.DetailActivityPresenter
-import it.giangraziano.moovelcodingchallenge.presenter.DetailActivityPresenterImpl
 import kotlinx.android.synthetic.main.activity_user_detail.*
 import android.content.Intent
-import android.view.View
+import it.giangraziano.moovelcodingchallenge.mainView.EXTRA_USER_LOGIN
 
 
 class UserDetailActivity : AppCompatActivity(), DetailView {
@@ -27,7 +24,7 @@ class UserDetailActivity : AppCompatActivity(), DetailView {
         setContentView(R.layout.activity_user_detail)
         val userLogin = intent.extras.get(EXTRA_USER_LOGIN).toString()
         detailActivityPresenter = DetailActivityPresenterImpl(this, userLogin)
-        detailActivityPresenter?.onResume()
+        detailActivityPresenter?.load()
         send_email_fab.setOnClickListener {
             Toast.makeText(
                     this,
@@ -63,6 +60,6 @@ class UserDetailActivity : AppCompatActivity(), DetailView {
 
     override fun onDestroy() {
         super.onDestroy()
-        detailActivityPresenter?.onDestroy()
+        detailActivityPresenter?.dispose()
     }
 }

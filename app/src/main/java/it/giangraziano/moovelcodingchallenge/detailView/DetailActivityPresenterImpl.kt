@@ -1,10 +1,9 @@
-package it.giangraziano.moovelcodingchallenge.presenter
+package it.giangraziano.moovelcodingchallenge.detailView
 
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import it.giangraziano.moovelcodingchallenge.model.GitHubStateImpl
-import it.giangraziano.moovelcodingchallenge.detailView.DetailView
 
 class DetailActivityPresenterImpl(
         private val detailView: DetailView,
@@ -14,11 +13,11 @@ class DetailActivityPresenterImpl(
     private val state = GitHubStateImpl.create()
     private var disposable: Disposable? = null
 
-    override fun onResume() {
+    override fun load() {
         serve()
     }
 
-    override fun onDestroy() {
+    override fun dispose() {
         disposable?.dispose()
     }
 

@@ -1,4 +1,4 @@
-package it.giangraziano.moovelcodingchallenge.adapters
+package it.giangraziano.moovelcodingchallenge.mainView.adapters
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
