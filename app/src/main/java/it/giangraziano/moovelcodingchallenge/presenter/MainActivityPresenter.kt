@@ -5,7 +5,5 @@ interface MainActivityPresenter {
 
     fun onScrollToEnd()
 
-    fun onRecyclerViewScrollToEnd()
-
     fun onDestroy()
 }
