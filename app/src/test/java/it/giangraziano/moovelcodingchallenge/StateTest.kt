@@ -30,6 +30,7 @@ class StateTest {
     public var state: GitHubStateImpl? = null
 
     private fun generateUsers (number: Int): Response {
+        //mocked manually because of trouble with mockito
         val list = mutableListOf<GitHubUser>()
         for(i in 0 until number){
             list.add(GitHubUser())
