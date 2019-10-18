@@ -1,4 +1,4 @@
-# Moovel Coding Challenge
+# GitHub Users
 
 <img src="https://i.imgur.com/ehNHaQ8.jpg" width=250>    <img src="https://i.imgur.com/yVl2zXf.jpg" width=250>
 
